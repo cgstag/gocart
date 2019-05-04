@@ -1,10 +1,12 @@
 package middlewares
 
 import (
+	"gitlab.com/deroo/gocart/errors"
+	"gitlab.com/deroo/gocart/helpers"
 	"strings"
 	"time"
 
-	"github.com/Sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 
 
 	"github.com/labstack/echo"
@@ -42,9 +44,10 @@ func RequestContextMiddleware(logger *logrus.Entry,
 			// Start time
 			// IDEA: this can be used to calculate request internal time
 			rc.start = time.Now()
+			uuidV4, _ := uuid.NewV4()
 
 			// Generate request ID and get CrossRequestID
-			rc.requestID = strings.Replace(uuid.NewV4().String(), "-", "", -1)
+			rc.requestID = strings.Replace(uuidV4.String(), "-", "", -1)
 			if c.Request().Header.Get("X-Request-ID") != "" {
 				rc.crossRequestID = c.Request().Header.Get("X-Request-ID")
 			}

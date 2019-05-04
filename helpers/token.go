@@ -53,9 +53,10 @@ func SetupTokenHelper(secret, issuer string, storeTokenDuration, anonymousTokenD
 
 func (s *TokenHelper) CreateToken(audience, storeName string, storeID int) *JWTToken {
 	now := time.Now()
+	uuidV4,_ := uuid.NewV4()
 	jwtToken := &JWTToken{
 		StandardClaims: jwt.StandardClaims{
-			Id:        uuid.NewV4().String(),
+			Id:        uuidV4.String(),
 			IssuedAt:  now.Unix(),
 			Issuer:    s.issuer,
 			Audience:  audience,
@@ -70,7 +71,8 @@ func (s *TokenHelper) CreateToken(audience, storeName string, storeID int) *JWTT
 // Since all JWT tokens are immutable, a new ID is created and also the expiration date is updated
 func (s *TokenHelper) refreshToken(jwtToken *JWTToken, duration int) {
 	now := time.Now()
-	jwtToken.Id = uuid.NewV4().String()
+	uuidV4,_ := uuid.NewV4()
+	jwtToken.Id = uuidV4.String()
 	jwtToken.IssuedAt = now.Unix()
 	jwtToken.ExpiresAt = now.Add(time.Duration(duration) * time.Hour * 24).Unix()
 }

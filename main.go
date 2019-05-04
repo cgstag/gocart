@@ -8,16 +8,16 @@ import (
 	"github.com/rifflock/lfshook"
 	"github.com/shopspring/decimal"
 
-	"./config"
-	"./middlewares"
-	"./stores/datastores"
+	"gitlab.com/deroo/gocart/config"
+	"gitlab.com/deroo/gocart/middlewares"
+	"gitlab.com/deroo/gocart/stores/datastores"
 
-	"github.com/Sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"./errors"
-	"./handlers"
-	"./helpers"
+	"gitlab.com/deroo/gocart/errors"
+	"gitlab.com/deroo/gocart/handlers"
+	"gitlab.com/deroo/gocart/helpers"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -83,7 +83,7 @@ func initLogrus(config *config.ApiConfig) *logrus.Entry {
 		for _, level := range logrus.AllLevels {
 			llmap[level] = config.Log.Outputs.File.Path
 		}
-		l.Hooks.Add(lfshook.NewHook(llmap))
+		l.Hooks.Add(lfshook.NewHook(llmap, l.Formatter))
 	}
 
 	// Log level

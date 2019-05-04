@@ -2,8 +2,8 @@ package datastores
 
 import (
 	"github.com/jinzhu/gorm"
-	"./errors"
-	"./models"
+	"gitlab.com/deroo/gocart/errors"
+	"gitlab.com/deroo/gocart/models"
 )
 
 type productDatastore struct {

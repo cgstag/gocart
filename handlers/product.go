@@ -7,11 +7,11 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
-	cache "github.com/patrickmn/go-cache"
-	"api/errors"
-	"api/middlewares"
-	"api/models"
-	"api/stores/datastores"
+	"github.com/patrickmn/go-cache"
+	"gitlab.com/deroo/gocart/errors"
+	"gitlab.com/deroo/gocart/middlewares"
+	"gitlab.com/deroo/gocart/models"
+	"gitlab.com/deroo/gocart/stores/datastores"
 )
 
 type productResource struct {
