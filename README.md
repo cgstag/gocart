@@ -24,10 +24,10 @@ $ make deps
 **Iniciando o MySql em docker container e criando database**
 
 ```bash
-$ docker run --name api_db \
+$ docker run --name gocart_db \
   -e MYSQL_ROOT_PASSWORD=123456 \
-  -e MYSQL_DATABASE=api \
-  -e MYSQL_USER=apiuser \
+  -e MYSQL_DATABASE=gocart \
+  -e MYSQL_USER=master \
   -e MYSQL_PASSWORD=123456 \
   -d -p 3306:3306 \
   mysql:5.7.18 \

@@ -9,7 +9,7 @@ debug: true
 # Relational database config
 db:  
   dialect: mysql
-  dsn: "apiuser:123456@tcp(localhost:3306)/api?tls=false&collation=utf8_general_ci&charset=utf8&parseTime=True&loc=Local"
+  dsn: "master:123456@tcp(localhost:3306)/gocart?tls=false&collation=utf8_general_ci&charset=utf8&parseTime=True&loc=Local"
   max_idle_connections: 10
   max_open_connections: 10  
 
